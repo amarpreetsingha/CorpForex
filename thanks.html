@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Forex</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		<script src="assets/script/jquery-3.2.1.min.js"></script>
+		<script>  
+			$(document).ready(function () {
+			$("#bookingdetails").hide();
+			$('#user').hide();
+				$('#submitagree').click(function () {
+					$('#user').fadeIn("slow");
+				});
+			});
+			
+			//Uploading Booking
+			var openBooking = function(event) {
+			var input = event.target;
+			var reader = new FileReader();
+			reader.onload = function(){
+			  req = reader.result;
+			  $("#bookingdetails").fadeIn("slow");
+			};
+			reader.readAsText(input.files[0]);
+			};
+		</script>
+		<style>
+		input[type="file"] {
+				display: none;
+			}
+		.custom-file-upload {
+			border: 1px solid #ccc;
+			display: inline-block;
+			padding: 6px 12px;
+			cursor: pointer;
+		}
+		.tall_height {
+			height: 41px;
+		}
+	</style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>Corp Forex</h1>
+						<p>Plan&nbsp;&bull;&nbsp; Book&nbsp;&bull;&nbsp;Spend<br />
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<h1>Your request has been carried out.</h1>
+								<h2>Thank you for using Corp Forex</h2>
+							</section>
+
+					</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+	<head>
+		<title>MC Corp Forex</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/checkbox.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+	var details;
+	var amt=20000;
+	$(document).ready(function () {
+		$("#submitagree").click(function () {
+		$.ajax({
+				url : "assets/data/Transaction.txt",
+				dataType: "text",
+				cache: false,
+				success : function (data) {
+					details = data;
+					var panno = $('#panno').val();
+					var srno;
+					var tde;
+					var ta;
+					var tda;
+					var avb;
+					
+					var noOfRows = $('table tr').length;
+					var count =noOfRows;
+					var i=count;
+					
+					var datea = '<tr>' +
+							'<td><input type="text" name="srno"id="srno'+i+'"></td>' +
+							'<td><input type="text" name="tde" id="tde'+i+'" ></td>' +
+							'<td><input type="text" name="ta"  id="ta'+i+'"></td>' +
+							'<td><input type="text" name="tda" id="tda'+i+'"></td>' +
+							'<td><input type="text" name="avb" id="avb'+i+'"></td>' +
+								'</tr>';
+					
+					$('#mastertable').append(datea);
+					srno=count;
+					tde = "Restaurant";
+					ta = details.substring(22, 34);
+					amt=amt-ta;
+					tda=details.substring(58,60)+"/"+details.substring(60,62) +" "+details.substring(62,64)+":"+details.substring(64,66)+":"+details.substring(66,68);
+					
+					//tda = details.substring(58, 68);
+					avb = amt;
+					$('#srno'+i).val(srno);
+					$('#tde'+i).val(tde);
+					$('#ta'+i).val(ta);
+					$('#tda'+i).val(tda);
+					$('#avb'+i).val(avb);
+				}
+			});
+				
+		});
+	});	
+	</script>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+			
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>mastercard Corp Forex</h1>
+						<p>Plan&nbsp;&bull;&nbsp; Book&nbsp;&bull;&nbsp;Spend<br />
+					</header>
+					
+					<nav id="nav">
+						<div>
+						<ul>
+						<li><input type = "button" value = "Reload" id="submitagree"
+								style = "background-color:#c79cc8;"/></li>
+						</div>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- First Section -->
+						
+						
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Transaction History</h2>
+								</header>
+								
+						
+								</table>		
+								<table id="mastertable">
+								
+								<tr>
+										<td>
+											Sr No.
+										</td>
+										<td>
+											Transaction Details
+										</td>
+											
+										<td>
+											Transaction Amount
+										</td>
+										
+										<td>
+											Transaction Date
+										</td>
+										
+										<td>
+											Available Balance
+										</td>
+																		
+								</tr>
+								
+								
+								
+								
+								</table>
+
+
+							</section>	
+
+							</div>
+						
+					</div>
+					
+				</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

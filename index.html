@@ -1,0 +1,638 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<script src="assets/script/jquery-3.2.1.min.js"></script>
+<script src="assets/script/canvasjs.min.js"></script>
+<script>
+$var = 0;
+	$(document).ready(function(){
+	$('#cardlist').css("background-color", "#8cc9f0");
+	$('#cardrange').css("background-color", "#ffffff");
+	$('#div1').show();
+	$('#div2').hide();
+	$('#displayuser').hide();
+	$('#statstable').hide();
+	$('#currencyrates').hide();
+	
+	
+		$('#addcard').click(function() { 
+			$("#carddetails").append('<tr style="background-color:white;"><td><input type="text" placeholder="XXXX XXXX XXXX XXXX"></td><td><input type="checkbox" id="dollar" name="check-category"  checked/><label for="dollar"><img src="images/dollar.png" height="30px" width="30px"/></label><input type="checkbox" id="euro" name="check-category"  /><label for="euro"><img src="images/euro.png" height="30px" width="30px"/></label><input type="checkbox" id="aud" name="check-category" /><label for="aud"><img src="images/aud.png" height="30px" width="30px"/></label></td></tr>')
+		});
+		
+		$('#cardlist').click(function() {
+			$('#cardlist').css("background-color", "#8cc9f0");
+			$('#cardrange').css("background-color", "#ffffff");
+			$('#div2').hide();
+			$('#div1').show(500);
+		});
+		
+		$('#cardrange').click(function() {
+			$('#cardrange').css("background-color", "#8cc9f0");
+			$('#cardlist').css("background-color", "#ffffff");
+			$('#div1').hide();
+			$('#div2').show(500);
+		});
+		
+	/*	$('#submitagree').click(function () {
+			$.ajax({
+            url : "assets/data/file.txt",
+            dataType: "text",
+			cache: false,
+            success : function (data) {
+                var details = data;
+				var agrno = $('#agrno').val();
+				var dollar;
+				var euro;
+				var aud;
+				var start_date;
+				var end_date;
+				var amount;
+				var srch = details.search(agrno);
+				if(srch != -1 && agrno != "") {
+					dollar = details.substring(srch + 8, srch + 16);
+					euro = details.substring(srch + 18, srch + 26);
+					aud = details.substring(srch + 28, srch + 36);
+					start_date = details.substring(srch + 37, srch + 45);
+					end_date = details.substring(srch + 46, srch + 54);
+					
+					$("#dollar").text(dollar);
+					$("#euro").text(euro);
+					$("#aud").text(aud);
+					$("#duration").text((start_date.concat("-")).concat(end_date));
+					
+					
+				}else {
+					alert("Agreement not found");
+					$("#dollar").text("-");
+					$("#euro").text("-");
+					$("#aud").text("-");
+					$("#duration").text("-");
+				}
+			}
+        });
+		});
+		*/
+		
+		$("#final").click(function () {
+				var loc = 'tranhis.html?';
+				loc += 'cardno=' + $('#cardno').val() + '&';
+				loc += 'dollar0=' + $('#dollar0').is(':checked') + '&';
+				loc += 'euro0=' + $('#euro0').is(':checked') + '&';
+				loc += 'aud0=' + $('#aud0').is(':checked') + '&';
+				loc += 'startrange=' + $('#startrange').val() + '&';
+				loc += 'endrange=' + $('#endrange').val() + '&';
+				loc += 'dollar1=' + $('#dollar1').is(':checked') + '&';
+				loc += 'euro1=' + $('#euro1').is(':checked') + '&';
+				loc += 'aud1=' + $('#aud1').is(':checked');
+				window.location.assign(loc);
+		});
+		
+		$('#login').click(function () {
+			$('#loginform').hide();
+			$('#displayuser').fadeIn("slow");
+		});
+		
+		function showGraph() {
+		var chart = new CanvasJS.Chart("chartContainer1", {
+				title: {
+					text: "Number of Employee",
+					fontSize: 30
+				},
+				animationEnabled: true,
+				axisX: {
+
+					gridColor: "Silver",
+					tickColor: "silver",
+					valueFormatString: "DD/MMM"
+
+				},
+				toolTip: {
+					shared: true
+				},
+				theme: "theme2",
+				axisY: {
+					gridColor: "Silver",
+					tickColor: "silver"
+				},
+				legend: {
+					verticalAlign: "bottom",
+					horizontalAlign: "center"
+				},
+				data: [{
+					type: "line",
+					showInLegend: true,
+					lineThickness: 2,
+					name: "Visits",
+					markerType: "square",
+					color: "#F08080",
+					dataPoints: [
+					{ x: new Date(2014, 0, 1), y: 30000 },
+					{ x: new Date(2015, 0, 1), y: 28000 },
+					{ x: new Date(2016, 0, 1), y: 29967 },
+					{ x: new Date(2017, 0, 1), y: 35000 }
+					]
+				},
+				],
+			});
+
+			chart.render();
+			
+			var chart = new CanvasJS.Chart("chartContainer2", {
+				title: {
+					text: "Number of Travel Cards",
+					fontSize: 25
+				},
+				animationEnabled: true,
+				axisX: {
+
+					gridColor: "Silver",
+					tickColor: "silver",
+					valueFormatString: "DD/MMM"
+
+				},
+				toolTip: {
+					shared: true
+				},
+				theme: "theme2",
+				axisY: {
+					gridColor: "Silver",
+					tickColor: "silver"
+				},
+				legend: {
+					verticalAlign: "bottom",
+					horizontalAlign: "center"
+				},
+				data: [{
+					type: "line",
+					showInLegend: true,
+					lineThickness: 2,
+					name: "Visits",
+					markerType: "square",
+					color: "#F08080",
+					dataPoints: [
+					{ x: new Date(2014, 0, 1), y: 6200 },
+					{ x: new Date(2015, 0, 1), y: 5800 },
+					{ x: new Date(2016, 0, 2), y: 6000 },
+					{ x: new Date(2017, 0, 1), y: 6300 }
+					]
+				}
+				],
+				});
+
+			chart.render();
+				
+				var chart = new CanvasJS.Chart("chartContainer3", {
+				title: {
+					text: "Average Card Spending",
+					fontSize: 30
+				},
+				animationEnabled: true,
+				axisX: {
+
+					gridColor: "Silver",
+					tickColor: "silver",
+					valueFormatString: "DD/MMM"
+
+				},
+				toolTip: {
+					shared: true
+				},
+				theme: "theme2",
+				axisY: {
+					gridColor: "Silver",
+					tickColor: "silver"
+				},
+				legend: {
+					verticalAlign: "bottom",
+					horizontalAlign: "center"
+				},
+				data: [{
+					type: "line",
+					showInLegend: true,
+					lineThickness: 2,
+					name: "Visits",
+					markerType: "square",
+					color: "#F08080",
+					dataPoints: [
+					{ x: new Date(2014, 0, 1), y: 4598098 },
+					{ x: new Date(2015, 0, 1), y: 4344500 },
+					{ x: new Date(2016, 0, 1), y: 4332124 },
+					{ x: new Date(2017, 0, 1), y: 5520000 }
+					]
+				},
+				],
+				});
+
+			chart.render();
+				
+				var chart = new CanvasJS.Chart("chartContainer4", {
+				title: {
+					text: "Card Spending per Employee",
+					fontSize: 25
+				},	
+				animationEnabled: true,
+				axisX: {
+
+					gridColor: "Silver",
+					tickColor: "silver",
+					valueFormatString: "DD/MMM"
+
+				},
+				toolTip: {
+					shared: true
+				},
+				theme: "theme2",
+				axisY: {
+					gridColor: "Silver",
+					tickColor: "silver"
+				},
+				legend: {
+					verticalAlign: "bottom",
+					horizontalAlign: "center"
+				},
+				data: [{
+					type: "line",
+					showInLegend: true,
+					lineThickness: 2,
+					name: "Visits",
+					markerType: "square",
+					color: "#F08080",
+					dataPoints: [
+					{ x: new Date(2014, 0, 1), y: 155 },
+					{ x: new Date(2015, 0, 1), y: 130 },
+					{ x: new Date(2016, 0, 2), y: 149 },
+					{ x: new Date(2017, 0, 1), y: 150 }
+					]
+				}
+				],
+				
+				legend: {
+					cursor: "pointer",
+					itemclick: function (e) {
+						if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+							e.dataSeries.visible = false;
+						}
+						else {
+							e.dataSeries.visible = true;
+						}
+						chart.render();
+					}
+				}
+			});
+			chart.render();
+		}
+		
+		$("#analyze").click(function () {
+			$("#statstable").fadeIn("slow");
+			//showGraph();
+		});
+		
+		$('#graphview').click(function () {
+			showGraph();
+		});
+		
+		$('#agreeview').click(function () {
+			$('#currencyrates').fadeIn("slow");
+		});
+		
+		$('#submitform').click(function () {
+			window.location = "http://localhost/Template4/thanks.html";
+		});
+		
+		
+});
+
+	//Global Variables
+	var stats;
+	var req;
+
+	//Uploading statistics
+	var openStats = function(event) {
+    var input = event.target;
+	var reader = new FileReader();
+    reader.onload = function(){
+      stats  = reader.result;
+    };
+    reader.readAsText(input.files[0]);
+  };
+  
+  //Uploading requirements
+  var openReq = function(event) {
+    var input = event.target;
+	var reader = new FileReader();
+    reader.onload = function(){
+      req = reader.result;
+    };
+    reader.readAsText(input.files[0]);
+  };
+</script>
+	<head>
+		<title>Forex</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<style>
+		input[type="file"] {
+				display: none;
+			}
+		.custom-file-upload {
+			border: 1px solid #ccc;
+			display: inline-block;
+			padding: 6px 12px;
+			cursor: pointer;
+		}
+		.tall_height {
+			height: 41px;
+		}
+	</style>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" height="100px" width="100px"/></span>
+						<h1>Corp Forex</h1>
+						<p>Plan&nbsp;&bull;&nbsp; Book&nbsp;&bull;&nbsp;Spend<br />
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<div name="loginform" id="loginform">
+							<ul>
+								<li><input type = "text" placeholder = "Username" name = "empid" id = "empid"
+								 style = "background-color:#efa8b0;
+										color:white;"/></li>
+								<li><input type = "password" placeholder = "Password" name = "pass" id = "pass"
+								 style = "background-color:#efa8b0;
+										color:white;"/></li>
+								<li>
+									<select name="companies">
+										<option>Mastercard</option>
+										<option>Alliance Data Systems</option>
+										<option>Heartland Payment Systems</option>
+										<option>Western Union </option>
+									</select>
+								</li>
+								<li>
+									<select name="location">
+										<option>Pune, India</option>
+										<option>Mumbai, India</option>
+										<option>Vadodara, India</option>
+										<option>Chennai, India</option>
+									</select>
+								</li>
+								<li><input type = "button" value = "login" id="login"
+								style = "background-color:#c79cc8;"/></li>
+							</ul>
+						</div>
+							<div name="displayuser" id="displayuser">
+							<h2>Hi Amarpreet</h2>
+							</div>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+					
+						<!-- BeforeBeforeFirst Section -->
+							<section id="beforebeforefirst" class="main special">
+								<header class="major">
+									<h2>Upload your Statistics</h2>
+								</header>
+								
+								<label for="stats" class="custom-file-upload">
+									<i class="fa fa-cloud-upload"></i> Upload Stats
+								</label>
+								<input id="stats" type="file" name="stats" onchange='openStats(event)'/>
+								
+								<label for="req" class="custom-file-upload">	
+									<i class="fa fa-cloud-upload"></i> Upload Requirements
+								</label>
+								<input id="req" type="file" name="req" onchange='openReq(event)'/>
+								
+								<input class="tall_height" type="date"/></li>
+								<input class="tall_height" type="date"/></li>
+								
+								<label class="custom-file-upload"><img src="images/done.svg" height="20px" id="analyze" name="analyze"/></label>
+								
+								<br>
+								<br>
+								<table id="statstable" name="statstable">
+									<tr>
+										<td colspan="3">Overall</td>
+									</tr>
+									<tr style="background-color:#E0E0E0;">
+										<td></td>
+										<td>Previous</td>
+										<td>Required</td>
+									</tr>
+									<tr style="background-color:white;">
+										<td>Number of Employees</td>
+										<td>29,967</td>
+										<td>35,000</td>
+										
+									</tr>
+									<tr style="background-color:white;">
+										<td>Number of Travel Cards</td>
+										<td>5,907</td>
+										<td>6,000</td>
+										
+									</tr>
+									<tr style="background-color:#F5F5F5;">
+										<td colspan="3">Monthly</td>
+									</tr>
+									<tr style="background-color:white;">
+										<td>Average Card Spending</td>
+										<td >$4,459,014</td>
+										<td>$5,520,000</td>
+										
+									</tr>
+									<tr style="background-color:white">
+										<td >Card Spending/Employee</td>
+										<td >$149</td>
+										<td>$150</td>
+										
+									</tr>
+									<tr style="background-color:white;">
+										<td>Spending/Transaction</td>
+										<td >$176</td>
+										<td>$180</td>
+										
+									</tr>
+									<tr style="background-color:#F5F5F5">
+										<td colspan="3">Average Spending Limits</td>
+									</tr>
+									<tr style="background-color:white">
+										<td >Per Transaction Limit</td>
+										<td>$3,227</td>
+										<td>$3,227</td>
+										
+									</tr>
+									<tr style="background-color:white;">
+										<td>Monthly Spending Limit</td>
+										<td>$9,866</td>
+										<td>$9,866</td>
+										
+									</tr>
+								</table>
+							</section>
+							
+							<!-- BeforeFirst Section -->
+							<section id="beforefirst" class="main special">
+								<header class="major">
+									<h2 id = "graphview">Graph View of Statistics</h2>
+								</header>
+								<div id="viewgraph">
+								<div id="chartContainer1" style="height: 300px; width: 45%;display: inline-block;"></div>
+								<div id="chartContainer2" style="height: 300px; width: 45%;display: inline-block;"></div>
+								<br/><br><br>
+								<div id="chartContainer3" style="height: 300px; width: 45%;display: inline-block;"></div>
+								<div id="chartContainer4" style="height: 300px; width: 45%;display: inline-block;"></div>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2 id="agreeview">Agreement</h2>
+								</header>
+								<table id="currencyrates" name="currencyrates" ">
+									<tr>
+										<td>Country</td>
+										<td>Currency (INR)</td>
+										<td>Guaranteed Value</td>
+									</tr>
+									<tr>
+										<td>US</td>
+										<td><img src = "images/dollar.png" height="25" width="25"></td>
+										<td style = "font-size:30px;" id = "dollar">64.50</td>
+										
+									</tr>
+									<tr>
+										<td style="background-color:white;">European</td>
+										<td style="background-color:white;"><img src = "images/euro.png" height="25" width="25"/></td>
+										<td style = "font-size:30px;background-color:white;" id = "euro">72.50</td>
+									</tr>
+									<tr>
+										<td>Australia</td>
+										<td><img src = "images/aud.png" height="25" width="25"/></td>
+										<td style = "font-size:30px;" id = "aud">48.75</td>
+									
+									</tr>
+								</table><br>
+								
+								<input type="checkbox" id="tnc" name="tnc"/>
+								<label for="tnc">Accept the terms and conditions</label>
+								<br><br>
+								<input type = "button" value = "Submit" id="submitform"
+								style = "background-color:#9bb2e1;"/>
+							</section>
+							
+							<!-- Second Section -->
+							<!--<section id="second" class="main special">
+								<header class="major">
+									<h2>Details</h2>
+								</header>
+								<input type="button" id="cardlist" value="Select Cards" name="cardlist">&nbsp;
+								<input type="button" id="cardrange" value="Select Range" name="cardrange">
+								<br><br>
+								<div id = "div1">
+								<table id="carddetails">
+									<tr style="background-color:white;">
+										<td><input type="text" placeholder="XXXX XXXX XXXX XXXX" name="cardno" id="cardno"></td>
+										<td>
+											<input type="checkbox" id="dollar0" name="check-category0" />
+											<label for="dollar0"><img src="images/dollar.png" height="30px" width="30px"/></label>		
+											<input type="checkbox" id="euro0" name="check-category0"/>
+											<label for="euro0"><img src="images/euro.png" height="30px" width="30px"/></label>
+											<input type="checkbox" id="aud0" name="check-category0" />
+											<label for="aud0"><img src="images/aud.png" height="30px" width="30px"/></label>	
+										</td>
+									</tr>
+								</table>
+								<input type="button" id="addcard" value="Add Card">
+								</div>
+								<div id = "div2">
+								<table>
+									<tr style="background-color:white;">
+										<td><input type="text" placeholder="Start Range" id = "startrange" /></td>
+										<td><input type="text" placeholder="End Range" id = "endrange"/></td>
+										<td>
+											<input type="checkbox" id="dollar1" name="check-category1"  checked/>
+											<label for="dollar1"><img src="images/dollar.png" height="30px" width="30px"/></label>
+											<input type="checkbox" id="euro1" name="check-category1" />
+											<label for="euro1"><img src="images/euro.png" height="30px" width="30px"/></label>
+											<input type="checkbox" id="aud1" name="check-category1" />
+											<label for="aud1"><img src="images/aud.png" height="30px" width="30px"/></label>	
+										</td>
+									</tr>
+								</table>
+									
+								</div>
+								
+							</section>
+							-->
+							
+							<!-- Third Section -->
+							<!--
+							<section id="third" class="main special">
+							<ul class="statistics">
+								<li class="style2">
+									<input type="button" value="Submit" id="final" name="final"/>
+								</li>
+							</ul>
+							</section>
+							-->
+					</div>
+
+				<!-- Footer -->
+				<!--
+				<footer id="footer">
+						<section>
+							<h2>About</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+						</section>
+						<section>
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Wing 1, Tower A, 9th & 10th Floors &bull; Business Bay, Survey No 103, Opposite Poona Golfs Course &bull;  Airport Road, Yerwada, Pune &bull; Maharashtra 411006</dd>
+								<dt>Phone</dt>
+								<dd>+91 (20) 67074535</dd>
+								<dt>Email</dt>
+								<dd><a href="#">amarpreetsingh.arora@mastercard.com</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+					</footer>
+					-->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
